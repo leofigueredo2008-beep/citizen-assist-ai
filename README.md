@@ -387,5 +387,5 @@ Data de verificação de todas as orientações: 09/11/2026.
 
 | Vídeo | Duração | Link |
 |-------|---------|------|
-| Vídeo técnico de PCAP | 5 a 8 minutos | PREENCHER (YouTube, não listado) |
-| Vídeo de SERS | até 3 minutos | PREENCHER (YouTube, não listado) |
+| Vídeo técnico de PCAP | 5 a 8 minutos | (https://youtu.be/6zycJZFkZRo) (YouTube, não listado) |
+| Vídeo de SERS | até 3 minutos | (https://youtu.be/GAgcPAXXOZI) (YouTube, não listado) |

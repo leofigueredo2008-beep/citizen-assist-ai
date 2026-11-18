@@ -235,9 +235,6 @@ class Assistente:
                     "Deseja tentar novamente? (s/n): "
                 )
 
-                if tentar_novamente is None:
-                    return
-
                 if tentar_novamente:
                     continue
 
@@ -284,9 +281,6 @@ class Assistente:
             ajudou = self.perguntar_sim_nao(
                 "\nEssa orientação respondeu sua dúvida? (s/n): "
             )
-
-            if ajudou is None:
-                ajudou = None
 
             tempo = round(time.time() - inicio, 1)
 
@@ -392,9 +386,6 @@ class Assistente:
                     tempo=tempo
                 )
                 
-                if ajudou is None:
-                    break
-
 
     def indicadores(self):
 
@@ -701,6 +692,14 @@ class Assistente:
             else None
         )
 
+        # Projeção simples de 12 meses (sem atualização de tarifas ou custos)
+        economia_led_12_meses = economia_led_reais * 12
+        resultado_led_12_meses = economia_led_12_meses - investimento_led
+        economia_solar_12_meses = economia_solar_reais * 12
+        resultado_solar_12_meses = (
+            economia_solar_12_meses - investimento_solar
+        )
+
         # RESULTADOS
 
         print("\n========== CENÁRIO ANALISADO ==========")
@@ -744,6 +743,14 @@ class Assistente:
                 f"Retorno simples estimado: "
                 f"{retorno_led:.1f} meses"
             )
+        print(
+            f"Economia estimada em 12 meses: "
+            f"{self._formatar_moeda(economia_led_12_meses)}"
+        )
+        print(
+            f"Saldo em 12 meses após o investimento: "
+            f"{self._formatar_moeda(resultado_led_12_meses)}"
+        )
 
         print("\n--- ALTERNATIVA 2: ENERGIA SOLAR ---")
 
@@ -781,6 +788,63 @@ class Assistente:
                 f"Retorno simples teórico: "
                 f"{retorno_solar:.1f} meses"
             )
+        print(
+            f"Valor teórico em 12 meses: "
+            f"{self._formatar_moeda(economia_solar_12_meses)}"
+        )
+        print(
+            f"Saldo teórico em 12 meses após o investimento: "
+            f"{self._formatar_moeda(resultado_solar_12_meses)}"
+        )
+
+        # RECOMENDAÇÃO E VIABILIDADE
+        print("\n========== RECOMENDAÇÃO E VIABILIDADE ==========")
+        if retorno_led is not None and retorno_led <= 12:
+            print(
+                "- LED: nas premissas informadas, o investimento inicial "
+                "tem retorno simples estimado em até 12 meses."
+            )
+        elif retorno_led is not None:
+            print(
+                "- LED: a economia existe nas premissas informadas, "
+                "mas o retorno simples ultrapassa 12 meses."
+            )
+        else:
+            print(
+                "- LED: não foi possível estimar o retorno porque "
+                "a economia financeira mensal ficou zerada."
+            )
+
+        if retorno_solar is not None and retorno_solar <= 60:
+            print(
+                "- Solar: o retorno simples estimado fica dentro de "
+                "60 meses, mas depende de avaliação técnica e orçamento atual."
+            )
+        elif retorno_solar is not None:
+            print(
+                "- Solar: o retorno simples estimado ultrapassa 60 meses; "
+                "avalie cuidadosamente o investimento e as condições do imóvel."
+            )
+        else:
+            print(
+                "- Solar: não foi possível estimar o retorno com os "
+                "parâmetros utilizados."
+            )
+
+        print(
+            "- Antes de decidir pela energia solar, verifique telhado, "
+            "sombreamento, orientação, regras da distribuidora e pelo menos "
+            "três orçamentos atualizados."
+        )
+        print(
+            "- A LED costuma exigir menor investimento inicial e não depende "
+            "de instalação fotovoltaica. Confira a iluminação e a eficiência "
+            "do modelo escolhido."
+        )
+        print(
+            "- Os limites de 12 e 60 meses são critérios orientativos "
+            "da simulação, não garantias de retorno financeiro."
+        )
 
         # IMPACTOS E LIMITAÇÕES
 

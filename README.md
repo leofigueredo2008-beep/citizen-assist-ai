@@ -155,7 +155,7 @@ O programa calcula e exibe: resposta encontrada (%), taxa de acerto (ajudou, %),
 
 ## 10. Teste com usuários
 
-O histórico do repositório guarda as perguntas realizadas pelos os usuários, e se eles estão satisfeitos com o resultado da pergunta. Os registros não contêm nomes ou dados pessoais. O sistema também registrou testes anteriores e execuções da funcionalidade de energia.
+O histórico do repositório guarda as perguntas realizadas pelos usuários, e se eles estão satisfeitos com o resultado da pergunta. Os registros não contêm nomes ou dados pessoais. O sistema também registrou testes anteriores e execuções da funcionalidade de energia.
 
 - **15 perguntas em texto livre**
 - **19 registros no histórico ao todo**, incluindo 1 navegação por categoria e 3 execuções da análise de energia.
@@ -231,7 +231,7 @@ A pergunta sobre como fazer um bolo foi corretamente tratada como fora do escopo
 | Simular e comparar **LED × energia solar** com valores editáveis, ver custos, impactos, limitações e referências | Opção 3 (`analisar_energia()`) |
 | Registrar a análise no histórico e perguntar se ajudou | Opção 3 |
 
-Na opção 3, o usuário pode alterar o consumo mensal (kWh), a tarifa (R$/kWh), a quantidade de lâmpadas e as horas de uso por dia. Aceitar Enter mantém o valor padrão, e 0 volta ao menu.
+Na opção 3, o usuário pode alterar o consumo mensal (kWh), a tarifa (R$/kWh), a quantidade de lâmpadas e as horas de uso por dia. Aceitar Enter mantém o valor padrão, e 0 volta ao menu. A tela apresenta também uma projeção simples de 12 meses, o saldo após o investimento e recomendações orientativas de viabilidade para LED e energia solar.
 
 ### 11.3 Dados e premissas
 
@@ -267,7 +267,7 @@ Investimento solar   = potência (kWp) × 1000 × custo (R$/Wp)
 Retorno simples      = investimento ÷ economia mensal
 ```
 
-**Necessidade comum e período de referência:** as duas alternativas respondem à mesma necessidade (reduzir a energia comprada da rede em uma residência com consumo de 166,5 kWh/mês) e são comparadas **por mês e em 12 meses**.
+**Necessidade comum e período de referência:** as duas alternativas respondem à mesma necessidade (reduzir a energia comprada da rede em uma residência com consumo de 166,5 kWh/mês). O programa calcula os resultados mensais e projeta 12 meses multiplicando a economia mensal por 12 e subtraindo o investimento inicial. Essa projeção simples não atualiza tarifas, custos ou condições de geração.
 
 ### 11.5 Comparação das alternativas (valores padrão)
 
@@ -282,7 +282,7 @@ Retorno simples      = investimento ÷ economia mensal
 | Resultado em 12 meses (economia − investimento) | + R$ 278,31 | − R$ 2.251,87 (o investimento ainda não voltou) |
 | Fonte | Renovável? Não: reduz o desperdício | **Renovável** |
 
-Os números acima foram conferidos à mão e batem com a execução do programa (opção 3, valores padrão). **As economias das duas alternativas não devem ser somadas**, pois foram calculadas separadamente sobre o mesmo consumo.
+Os números acima são uma projeção calculada a partir das premissas padrão. A opção 3 agora também calcula e imprime os valores projetados para 12 meses; o resultado real pode variar. **As economias das duas alternativas não devem ser somadas**, pois foram calculadas separadamente sobre o mesmo consumo.
 
 ### 11.6 Justificativa das recomendações
 
@@ -296,8 +296,8 @@ Os números acima foram conferidos à mão e batem com a execução do programa 
 
 ### 11.7 Como o assistente usa a análise
 
-- As orientações 11 (LED) e 12 (energia solar) trazem na resposta os conceitos, a fórmula de consumo e os cuidados da análise, com fonte e data.
-- A opção 3 aplica os cálculos com os dados do usuário e mostra, na mesma tela: cenário, resultados das duas alternativas, impactos, limitações, referências e o aviso de que a simulação é educativa.
+- As orientações 11 (LED) e 12 (energia solar) trazem na resposta os conceitos, a fórmula de consumo e os cuidados da análise, com fonte e data. Ambas também direcionam a pessoa à opção 3 para comparar as alternativas.
+- A opção 3 aplica os cálculos com os dados do usuário e mostra, na mesma tela: cenário, resultados mensais, projeção de 12 meses, saldo após o investimento inicial, retorno simples, recomendações orientativas, viabilidade, impactos, limitações, referências e o aviso de que a simulação é educativa.
 
 ### 11.8 Limitações das estimativas
 
@@ -330,7 +330,7 @@ O histórico contém testes da busca por orientações relacionadas à energia, 
 |-----------|------------------|---------------------|---------|-----------|
 | 09/11 15:38 | Comunidade sem acesso adequado à energia elétrica | Tarifa Social (resultado incorreto para a necessidade, que foi ajustado posteriormente) | Não | 37,8 |
 | 09/11 15:38 | Solicitação de atendimento pelo Luz para Todos | Luz para Todos | Sim | 13,8 |
-| 09/11 15:41 | Troca de lâmpadas comuns por LED | Tarifa Social (resultado incorreto, que foi ajustado porteriormente) | Não | 53,6 |
+| 09/11 15:41 | Troca de lâmpadas comuns por LED | Tarifa Social (resultado incorreto, que foi ajustado posteriormente) | Não | 53,6 |
 | 11/11 10:31 | Como funciona o Luz para Todos? | Luz para Todos | Sim | 64,9 |
 | 11/11 10:33 | Navegação pela categoria até a orientação de energia solar fotovoltaica | Energia solar fotovoltaica | Sim | 30,6 |
 
@@ -350,6 +350,12 @@ As duas perguntas que inicialmente retornaram uma orientação inadequada motiva
 - Avaliações positivas: **2 de 3 (66,7%)**.
 - Tempo médio por execução: **57,4 segundos**.
 - Facilidade média registrada: **4,0 / 5**.
+
+#### Comentário ilustrativo para avaliação negativa (simulado)
+
+O histórico registra uma avaliação negativa em uma das três execuções da análise, mas não contém o comentário escrito pela pessoa. Para não atribuir uma fala inventada a um participante real, o texto abaixo é apenas um exemplo de como esse retorno poderia ser registrado; **não é um comentário recebido**:
+
+> "Fiquei com dúvida sobre como esses valores foram calculados."
 
 **Limitação do registro:** o histórico atual guarda o resultado "ajudou/não ajudou", o tempo e a nota de facilidade, mas não grava os valores de consumo, tarifa, quantidade de lâmpadas ou comentários dos participantes. Portanto, não é possível reconstruir quais parâmetros foram digitados nem explicar por que uma das pessoas respondeu que a análise não ajudou.
 

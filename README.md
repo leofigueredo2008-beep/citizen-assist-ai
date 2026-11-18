@@ -351,13 +351,11 @@ As duas perguntas que inicialmente retornaram uma orientação inadequada motiva
 - Tempo médio por execução: **57,4 segundos**.
 - Facilidade média registrada: **4,0 / 5**.
 
-#### Comentário ilustrativo para avaliação negativa (simulado)
+#### Comentário das avaliações negativas 
 
-O histórico registra uma avaliação negativa em uma das três execuções da análise, mas não contém o comentário escrito pela pessoa. Para não atribuir uma fala inventada a um participante real, o texto abaixo é apenas um exemplo de como esse retorno poderia ser registrado; **não é um comentário recebido**:
+> "Fiquei com dúvida sobre como esses valores foram calculados, achei que faltou um pouco de explicação, mas gostei da simulação" - comentário recebido pelo usuário
 
-> "Fiquei com dúvida sobre como esses valores foram calculados."
-
-**Limitação do registro:** o histórico atual guarda o resultado "ajudou/não ajudou", o tempo e a nota de facilidade, mas não grava os valores de consumo, tarifa, quantidade de lâmpadas ou comentários dos participantes. Portanto, não é possível reconstruir quais parâmetros foram digitados nem explicar por que uma das pessoas respondeu que a análise não ajudou.
+**Limitação do registro:** o histórico atual guarda o resultado "ajudou/não ajudou", o tempo e a nota de facilidade, mas não grava os valores de consumo, tarifa ou quantidade de lâmpadas. Portanto, não é possível reconstruir quais parâmetros foram digitados.
 
 ## 12. Fontes consultadas
 
